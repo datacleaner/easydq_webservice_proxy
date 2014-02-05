@@ -16,8 +16,9 @@
 	</modules>
 
 	<scm>
-		<developerConnection>scm:svn:svn://svn.humaninference.com/easydq/WebServiceProxy/trunk</developerConnection>
-		<connection>scm:svn:svn://svn.humaninference.com/easydq/WebServiceProxy/trunk</connection>
+		<url>https://github.com/datacleaner/easydq_webservice_proxy</url>
+		<connection>scm:git:https://github.com/datacleaner/easydq_webservice_proxy.git</connection>
+		<developerConnection>scm:git:https://github.com/datacleaner/easydq_webservice_proxy.git</developerConnection>
 	</scm>
 
 	<build>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%d [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="fileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>WebServiceProxy.log</file>
+		<append>true</append>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%d [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<fileNamePattern>WebServiceProxy_%i.log</fileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>3</maxIndex>
+		</rollingPolicy>
+
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<maxFileSize>5MB</maxFileSize>
+		</triggeringPolicy>
+
+	</appender>
+
+	<appender name="acountancyFileAppender" class="ch.qos.logback.core.FileAppender">
+		<filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+			<evaluator> <!-- defaults to type ch.qos.logback.classic.boolex.JaninoEventEvaluator -->
+				<expression>return !logger.equals("AccountancyRecoveryLogger");
+				</expression>
+			</evaluator>
+			<OnMismatch>NEUTRAL</OnMismatch>
+			<OnMatch>DENY</OnMatch>
+		</filter>
+		<file>AccountancyRecoveryLog.log</file>
+		<append>true</append>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%d - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="com.hi.easydq.proxy" level="debug" />
+
+	<logger name="io.netty" level="warn" />
+	<logger name="org.eobjects.metamodel" level="warn" />
+
+	<logger name="AccountancyRecoveryLog" level="error">
+		<appender-ref ref="fileAppender" />
+	</logger>
+
+	<root level="error">
+		<appender-ref ref="consoleAppender" />
+		<appender-ref ref="fileAppender"  />
+		<appender-ref ref="accountancyFileAppender" />
+	</root>
+</configuration>

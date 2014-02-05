@@ -1,0 +1,69 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.hi</groupId>
+		<artifactId>parent-pom</artifactId>
+		<version>1.11</version>
+	</parent>
+	<groupId>com.hi.easydq</groupId>
+	<artifactId>WebServiceProxy</artifactId>
+	<version>0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>core</module>
+	</modules>
+
+	<scm>
+		<developerConnection>scm:svn:svn://svn.humaninference.com/easydq/WebServiceProxy/trunk</developerConnection>
+		<connection>scm:svn:svn://svn.humaninference.com/easydq/WebServiceProxy/trunk</connection>
+	</scm>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.2.1</version>
+				<configuration>
+					<mainClass>com.hi.easydq.proxy.WebServiceProxy</mainClass>
+					<arguments>
+						<argument>8080</argument>
+					</arguments>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<!-- create aggregate report when "mvn site" is invoked. -->
+						<id>aggregate</id>
+						<goals>
+							<goal>aggregate</goal>
+						</goals>
+						<phase>site</phase>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>nexus</id>
+			<name>Nexus maven repo at HI</name>
+			<url>http://repo.humaninference.com/content/groups/public</url>
+			<releases>
+				<enabled>true</enabled>
+				<checksumPolicy>fail</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<checksumPolicy>fail</checksumPolicy>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+</project>

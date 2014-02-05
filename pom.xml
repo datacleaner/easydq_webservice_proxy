@@ -7,7 +7,7 @@
 	</parent>
 	<groupId>com.hi.easydq</groupId>
 	<artifactId>WebServiceProxy</artifactId>
-	<version>0.1</version>
+	<version>0.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<modules>
@@ -18,7 +18,7 @@
 		<url>https://github.com/datacleaner/easydq_webservice_proxy</url>
 		<connection>scm:git:https://github.com/datacleaner/easydq_webservice_proxy.git</connection>
 		<developerConnection>scm:git:https://github.com/datacleaner/easydq_webservice_proxy.git</developerConnection>
-	  <tag>WebServiceProxy-0.1</tag>
+	  <tag>HEAD</tag>
   </scm>
 
 	<build>

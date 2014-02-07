@@ -148,13 +148,16 @@ public class Accountancy {
 	}
 
 	/**
-	 * Adds the entry to the storage map.
+	 * Adds the entry to the storage map if there is enough space in it. If not,
+	 * flushes the queue and repeats the add attempt.
 	 * 
-	 * @param customer
 	 * @param accountancyItem
+	 *            The item to be saved.
 	 */
 	public void addItem(AccountancyItem accountancyItem) {
-		accountancyItems.add(accountancyItem);
+		while (!accountancyItems.offer(accountancyItem)) {
+			flushItems();
+		}
 	}
 
 	/**
